@@ -413,10 +413,12 @@
 
         a.project-card:hover .card-banner svg { transform: scale(1.06); }
 
+        /* Fixed: View Repo button is now strictly on top of all banner graphics */
         .github-pill {
             position: absolute;
             top: 12px;
             right: 12px;
+            z-index: 20;
             background: var(--bg-primary);
             color: var(--text-primary);
             border: 1px solid var(--border);
@@ -798,7 +800,7 @@
                     <span><i class="fa-solid fa-language"></i> Greek (Native) · English (C2)</span>
                 </div>
                 <div class="hero-actions">
-                    <a id="githubProfileBtn" href="https://github.com/" target="_blank" class="btn btn-primary">
+                    <a id="githubProfileBtn" href="https://github.com/XristosT98" target="_blank" class="btn btn-primary">
                         <i class="fa-brands fa-github"></i> GitHub Profile
                     </a>
                     <a id="linkedinProfileBtn" href="https://www.linkedin.com/in/xristos-tsamis-163a23234" target="_blank" class="btn btn-outline">
@@ -846,12 +848,42 @@
             </div>
         </header>
 
-        <!-- Projects Section (Whole Cards Clickable + Key Metrics) -->
+        <!-- Projects Section (Greek Sign Language placed first, View Repo fix applied) -->
         <section id="projects" class="reveal">
             <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Featured Data Science Projects</h2>
             <div class="grid-2">
-                <!-- Project 1 -->
-                <a id="proj1Link" href="https://github.com/" target="_blank" class="project-card">
+                <!-- Project 1: Greek Sign Language Real-Time Translation -->
+                <a id="proj1Link" href="https://github.com/XristosT98/Greek-Sign-Language" target="_blank" class="project-card">
+                    <div class="card-banner">
+                        <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
+                        <svg viewBox="0 0 400 140" fill="none">
+                            <circle cx="200" cy="70" r="35" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 6"/>
+                            <circle cx="200" cy="70" r="15" fill="rgba(59, 130, 246, 0.2)" stroke="#8b5cf6" stroke-width="2"/>
+                            <circle cx="200" cy="70" r="5" fill="#3b82f6"/>
+                            <path d="M 120 70 L 155 70" stroke="#60a5fa" stroke-width="2"/>
+                            <path d="M 245 70 L 280 70" stroke="#60a5fa" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Real-Time Greek Sign Language Translation</h3>
+                        <p class="card-desc">
+                            End-to-end AI system performing <strong>live real-time translation</strong> of the Greek Finger Alphabet (static signs via MLP) and dynamic words/phrases (using SPOTER Transformer & BiLSTM) captured via webcam. Deployed live with a FastAPI backend and Cloudflare Tunnels for remote streaming.
+                        </p>
+                        <div class="metrics-bar">
+                            <span class="metric-badge"><i class="fa-solid fa-video"></i> Live Webcam Inference</span>
+                            <span class="metric-badge"><i class="fa-solid fa-bullseye"></i> 99.77% Acc (SPOTER)</span>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">OpenCV / MediaPipe</span>
+                            <span class="tag">SPOTER / Transformer</span>
+                            <span class="tag">FastAPI</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2: eBay Auctions & CIFAR-10 Classification -->
+                <a id="proj2Link" href="https://github.com/XristosT98/ml-ebay-cifar10-project" target="_blank" class="project-card">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
                         <svg viewBox="0 0 400 140" fill="none">
@@ -882,8 +914,8 @@
                     </div>
                 </a>
 
-                <!-- Project 2 -->
-                <a id="proj2Link" href="https://github.com/" target="_blank" class="project-card">
+                <!-- Project 3: Credit Card Fraud Detection -->
+                <a id="proj3Link" href="https://github.com/" target="_blank" class="project-card">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
                         <svg viewBox="0 0 400 140" fill="none">
@@ -914,8 +946,8 @@
                     </div>
                 </a>
 
-                <!-- Project 3 -->
-                <a id="proj3Link" href="https://github.com/" target="_blank" class="project-card">
+                <!-- Project 4: Breast Cancer Diagnostic Prediction (WDBC) -->
+                <a id="proj4Link" href="https://github.com/XristosT98/wdbc-breast-cancer-prediction" target="_blank" class="project-card">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
                         <svg viewBox="0 0 400 140" fill="none">
@@ -942,8 +974,8 @@
                     </div>
                 </a>
 
-                <!-- Project 4 -->
-                <a id="proj4Link" href="https://github.com/" target="_blank" class="project-card">
+                <!-- Project 5: Historical Infrastructure Plans OCR & Vision AI -->
+                <a id="proj5Link" href="https://github.com/" target="_blank" class="project-card" style="grid-column: 1 / -1; max-width: 100%;">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
                         <svg viewBox="0 0 400 140" fill="none">
@@ -1064,7 +1096,7 @@
             </div>
         </section>
 
-        <!-- Education Section (Erasmus+ Removed) -->
+        <!-- Education Section -->
         <section id="education" class="reveal">
             <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <div class="timeline">
@@ -1202,19 +1234,21 @@
             githubProfile: "https://github.com/To_Username_Sou",
             linkedinProfile: "https://www.linkedin.com/in/xristos-tsamis-163a23234",
             cvFile: "CV_2026.pdf",
-            project1_ebay_cifar: "https://github.com/To_Username_Sou/ebay-cifar10-ml-analysis",
-            project2_fraud_weka: "https://github.com/To_Username_Sou/credit-card-fraud-detection",
-            project3_wdbc_cancer: "https://github.com/To_Username_Sou/wdbc-breast-cancer-prediction",
-            project4_bvg_ocr: "https://github.com/To_Username_Sou/bvg-historical-plans-ocr"
+            project1_gsl: "https://github.com/CharalamposZisis/Greek-Sign-Language",
+            project2_ebay_cifar: "https://github.com/To_Username_Sou/ebay-cifar10-ml-analysis",
+            project3_fraud_weka: "https://github.com/To_Username_Sou/credit-card-fraud-detection",
+            project4_wdbc_cancer: "https://github.com/To_Username_Sou/wdbc-breast-cancer-prediction",
+            project5_bvg_ocr: "https://github.com/To_Username_Sou/bvg-historical-plans-ocr"
         };
 
         document.getElementById('githubProfileBtn').href = MY_LINKS.githubProfile;
         document.getElementById('linkedinProfileBtn').href = MY_LINKS.linkedinProfile;
         document.getElementById('cvDownloadBtn').href = MY_LINKS.cvFile;
-        document.getElementById('proj1Link').href = MY_LINKS.project1_ebay_cifar;
-        document.getElementById('proj2Link').href = MY_LINKS.project2_fraud_weka;
-        document.getElementById('proj3Link').href = MY_LINKS.project3_wdbc_cancer;
-        document.getElementById('proj4Link').href = MY_LINKS.project4_bvg_ocr;
+        document.getElementById('proj1Link').href = MY_LINKS.project1_gsl;
+        document.getElementById('proj2Link').href = MY_LINKS.project2_ebay_cifar;
+        document.getElementById('proj3Link').href = MY_LINKS.project3_fraud_weka;
+        document.getElementById('proj4Link').href = MY_LINKS.project4_wdbc_cancer;
+        document.getElementById('proj5Link').href = MY_LINKS.project5_bvg_ocr;
 
         // =========================================================================
         // 2. DARK / LIGHT THEME TOGGLE
