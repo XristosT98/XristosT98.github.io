@@ -413,7 +413,6 @@
 
         a.project-card:hover .card-banner svg { transform: scale(1.06); }
 
-        /* Fixed: View Repo button is now strictly on top of all banner graphics */
         .github-pill {
             position: absolute;
             top: 12px;
@@ -704,17 +703,10 @@
             border: 1px solid var(--border);
             padding: 0.8rem 1rem;
             border-radius: 10px;
-            margin: 1rem 0 0.6rem;
+            margin: 1rem 0 1.25rem;
             color: var(--accent);
             word-break: break-all;
             user-select: all;
-        }
-
-        .phone-display {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.25rem;
         }
 
         .modal-actions {
@@ -800,7 +792,7 @@
                     <span><i class="fa-solid fa-language"></i> Greek (Native) · English (C2)</span>
                 </div>
                 <div class="hero-actions">
-                    <a id="githubProfileBtn" href="https://github.com/XristosT98" target="_blank" class="btn btn-primary">
+                    <a id="githubProfileBtn" href="https://github.com/" target="_blank" class="btn btn-primary">
                         <i class="fa-brands fa-github"></i> GitHub Profile
                     </a>
                     <a id="linkedinProfileBtn" href="https://www.linkedin.com/in/xristos-tsamis-163a23234" target="_blank" class="btn btn-outline">
@@ -826,7 +818,7 @@
                     <circle cx="150" cy="45" r="6" fill="#3b82f6"/>
                     <circle cx="245" cy="115" r="6" fill="#8b5cf6"/>
                     <circle cx="210" cy="230" r="6" fill="#3b82f6"/>
-                    <circle cx="90" cy="230" r="6" fill="#8b5cf6"/>
+                    <circle cx="90" cy="230" r="6" fill="#3b82f6"/>
                     <circle cx="55" cy="115" r="6" fill="#3b82f6"/>
                     <circle cx="150" cy="150" r="8" fill="#60a5fa"/>
                     <line x1="150" y1="150" x2="150" y2="45" stroke="var(--accent)" stroke-opacity="0.4"/>
@@ -848,12 +840,12 @@
             </div>
         </header>
 
-        <!-- Projects Section (Greek Sign Language placed first, View Repo fix applied) -->
+        <!-- Projects Section -->
         <section id="projects" class="reveal">
             <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Featured Data Science Projects</h2>
             <div class="grid-2">
-                <!-- Project 1: Greek Sign Language Real-Time Translation -->
-                <a id="proj1Link" href="https://github.com/XristosT98/Greek-Sign-Language" target="_blank" class="project-card">
+                <!-- Project 1: Greek Sign Language -->
+                <a id="proj1Link" href="https://github.com/CharalamposZisis/Greek-Sign-Language" target="_blank" class="project-card">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
                         <svg viewBox="0 0 400 140" fill="none">
@@ -882,7 +874,7 @@
                     </div>
                 </a>
 
-                <!-- Project 2: eBay Auctions & CIFAR-10 Classification -->
+                <!-- Project 2: eBay Auctions & CIFAR-10 -->
                 <a id="proj2Link" href="https://github.com/XristosT98/ml-ebay-cifar10-project" target="_blank" class="project-card">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
@@ -915,7 +907,7 @@
                 </a>
 
                 <!-- Project 3: Credit Card Fraud Detection -->
-                <a id="proj3Link" href="https://github.com/" target="_blank" class="project-card">
+                <a id="proj3Link" href="https://github.com/XristosT98/Credit-Card-Fraud-Detection" target="_blank" class="project-card">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
                         <svg viewBox="0 0 400 140" fill="none">
@@ -946,7 +938,7 @@
                     </div>
                 </a>
 
-                <!-- Project 4: Breast Cancer Diagnostic Prediction (WDBC) -->
+                <!-- Project 4: Breast Cancer Diagnostic Prediction -->
                 <a id="proj4Link" href="https://github.com/XristosT98/wdbc-breast-cancer-prediction" target="_blank" class="project-card">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
@@ -974,8 +966,8 @@
                     </div>
                 </a>
 
-                <!-- Project 5: Historical Infrastructure Plans OCR & Vision AI -->
-                <a id="proj5Link" href="https://github.com/" target="_blank" class="project-card" style="grid-column: 1 / -1; max-width: 100%;">
+                <!-- Project 5: Historical Infrastructure Plans OCR -->
+                <a id="proj5Link" href="https://github.com/XristosT98/bvg-historical-plans-ocr" target="_blank" class="project-card" style="grid-column: 1 / -1; max-width: 100%;">
                     <div class="card-banner">
                         <span class="github-pill"><i class="fa-brands fa-github"></i> View Repo ↗</span>
                         <svg viewBox="0 0 400 140" fill="none">
@@ -1210,7 +1202,6 @@
                 Peristeri, Athens, 12136 Greece · Direct Contact:
             </p>
             <div class="email-display" id="emailText">xristostsamis941998@gmail.com</div>
-            <div class="phone-display"><i class="fa-solid fa-phone" style="color: var(--accent);"></i> +30 6948114348</div>
             <div class="modal-actions">
                 <button class="btn btn-primary" id="copyEmailBtn">
                     <i class="fa-regular fa-copy"></i> <span id="copyBtnText">Copy Email</span>
@@ -1234,8 +1225,8 @@
             githubProfile: "https://github.com/XristosT98",
             linkedinProfile: "https://www.linkedin.com/in/xristos-tsamis-163a23234",
             cvFile: "CV_2026.pdf",
-            project1_gsl: "https://github.com/XristosT98/Greek-Sign-Language",
-            project2_ebay_cifar: "https://github.com/XristosT98/ebay-cifar10-ml-analysis",
+            project1_gsl: "https://github.com/CharalamposZisis/Greek-Sign-Language",
+            project2_ebay_cifar: "https://github.com/XristosT98/ml-ebay-cifar10-project",
             project3_fraud_weka: "https://github.com/XristosT98/Credit-Card-Fraud-Detection",
             project4_wdbc_cancer: "https://github.com/XristosT98/wdbc-breast-cancer-prediction",
             project5_bvg_ocr: "https://github.com/XristosT98/bvg-historical-plans-ocr"
