@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christos Tsamis | Data Science & Machine Learning Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root[data-theme="dark"] {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --bg-card: #18181f;
+            --bg-card-hover: #20202a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --border: #2a2a35;
+            --tag-bg: #1e293b;
+            --tag-text: #60a5fa;
+        }
+
+        :root[data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.1);
+            --border: #e2e8f0;
+            --tag-bg: #eff6ff;
+            --tag-text: #1d4ed8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.15;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 720px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+
+        /* Projects Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-links a {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+
+        .card-links a:hover {
+            color: var(--accent);
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Timeline (Experience, Education, Volunteering) */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.95rem;
+            top: 0.35rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .timeline-role {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .timeline-org {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-body {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .timeline-body ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+
+        .timeline-body li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+            border-radius: 10px;
+        }
+
+        .skill-box h3 {
+            font-size: 1rem;
+            margin-bottom: 0.85rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-box h3 i {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Christos<span>.Tsamis</span></a>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#volunteering">Volunteering</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                <i class="fa-solid fa-sun" id="themeIcon"></i>
+                <span id="themeText">Light</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-badge">
+                <i class="fa-solid fa-terminal"></i> Mathematician & Data Scientist
+            </div>
+            <h1>Hi, I'm Christos Tsamis.</h1>
+            <p>
+                Management Trainee in Banking & M.Sc. Candidate in <strong>Big Data and Analytics</strong> with a strong foundation in <strong>Mathematics</strong>. Passionate about Machine Learning, Risk Modeling, Computer Vision, and turning complex datasets into actionable business decisions.
+            </p>
+            <div class="hero-actions">
+                <a href="https://github.com/" target="_blank" class="btn btn-primary">
+                    <i class="fa-brands fa-github"></i> GitHub Profile
+                </a>
+                <a href="https://linkedin.com/" target="_blank" class="btn btn-outline">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:xristostsamis941998@yahoo.gr" class="btn btn-outline">
+                    <i class="fa-solid fa-envelope"></i> Contact Me
+                </a>
+            </div>
+        </header>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title"><i class="fa-solid fa-code-branch"></i> Featured Data Science Projects</h2>
+            <div class="grid-2">
+                <!-- Project 1 -->
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">eBay Auctions & CIFAR-10 Classification</h3>
+                            <div class="card-links">
+                                <a href="#" title="View Repository"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-desc">
+                            Two-part Machine Learning study: (A) Regression and classification models predicting eBay auction sales, prices, and competitiveness using Target Encoding & strict Data Leakage auditing. (B) Classical Computer Vision pipeline (HOG + Color Histograms + PCA) for CIFAR-10 image recognition.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">HOG & PCA</span>
+                        <span class="tag">SVM / k-NN / RF</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">Credit Card Fraud Detection (1M Transactions)</h3>
+                            <div class="card-links">
+                                <a href="#" title="View Repository"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-desc">
+                            Addressed extreme class imbalance ("accuracy paradox") in 1,000,000 transactions. Implemented Undersampling, Cost-Sensitive Learning (1:100 penalty matrix on J48), Random Forest, and Unsupervised Clustering (K-Means & DBSCAN) to isolate high-risk zones and build customer white-lists.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Weka</span>
+                        <span class="tag">Cost-Sensitive Learning</span>
+                        <span class="tag">Random Forest</span>
+                        <span class="tag">K-Means / DBSCAN</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">Breast Cancer Diagnostic Prediction (WDBC)</h3>
+                            <div class="card-links">
+                                <a href="#" title="View Repository"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-desc">
+                            Comparative evaluation of clinical classification models on the Wisconsin Diagnostic dataset. Focused on maximizing Recall (Sensitivity) to prevent false-negative diagnoses, combining SMOTE upsampling, Z-score normalization, and Grid Search hyperparameter tuning.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">RapidMiner</span>
+                        <span class="tag">SMOTE</span>
+                        <span class="tag">Grid Search</span>
+                        <span class="tag">Medical ML</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">Historical Infrastructure Plans OCR & Vision AI</h3>
+                            <div class="card-links">
+                                <a href="#" title="View Repository"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-desc">
+                            Collaborative industry project with Berliner Verkehrsbetriebe (BVG) during the Erasmus BIP "AI and Society" at HTW Berlin. Developed computer vision and OCR pipelines to automatically detect and extract title blocks from historical public transit blueprints.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">OCR / Vision Models</span>
+                        <span class="tag">HTW Berlin BIP</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="timeline-role">Management Trainee</span> · <span class="timeline-org">Piraeus Bank</span>
+                        </div>
+                        <span class="timeline-date">May 2026 – Present</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Selected for the competitive Management Trainee Program, rotating across key analytical and technology divisions.</li>
+                            <li><strong>Risk Data & Model Validation:</strong> Assisted in validating credit risk models, data quality checks, and regulatory compliance analytics.</li>
+                            <li><strong>Digital Banking Pre-Analysis:</strong> Contributed to business requirements analysis, user journey mapping, and data-driven feature evaluation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="timeline-role">Commercial Sales Data Analyst</span> · <span class="timeline-org">FMCG Sector (Stamou)</span>
+                        </div>
+                        <span class="timeline-date">Prior Experience</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Analyzed commercial sales data, tracked KPIs, and generated automated periodic reports to support executive decision-making.</li>
+                            <li>Monitored product performance, distribution trends, and sales forecasting using Excel and BI tools.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="timeline-role">Digital Educational Content Developer (Remote)</span> · <span class="timeline-org">E-Learning</span>
+                        </div>
+                        <span class="timeline-date">Prior Experience</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Digitized, structured, and formatted interactive school exercises and mathematical content using <strong>Moodle</strong> and <strong>H5P</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="timeline-role">M.Sc. in Information Systems & Services (Big Data & Analytics)</span> · <span class="timeline-org">University of Piraeus</span>
+                        </div>
+                        <span class="timeline-date">2025 – Present</span>
+                    </div>
+                    <div class="timeline-body">
+                        Specialization in Big Data, Machine Learning, Data Mining, Business Process Simulation, and Optimization Techniques.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="timeline-role">Erasmus+ Blended Intensive Program (BIP): "AI and Society"</span> · <span class="timeline-org">HTW Berlin</span>
+                        </div>
+                        <span class="timeline-date">Sep 2026 – Oct 2026</span>
+                    </div>
+                    <div class="timeline-body">
+                        Intensive international program in Berlin focusing on applied Artificial Intelligence, societal impact, and computer vision solutions for urban infrastructure.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="timeline-role">B.Sc. in Mathematics</span> · <span class="timeline-org">University Degree</span>
+                        </div>
+                        <span class="timeline-date">Graduated</span>
+                    </div>
+                    <div class="timeline-body">
+                        Strong theoretical and applied background in Probability, Statistics, Linear Algebra, Calculus, and Mathematical Modeling.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteering Section -->
+        <section id="volunteering">
+            <h2 class="section-title"><i class="fa-solid fa-hands-helping"></i> Volunteering & Leadership</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="timeline-role">Team Leader & Active Member</span> · <span class="timeline-org">ESN KAPA Athens (Erasmus Student Network)</span>
+                        </div>
+                        <span class="timeline-date">2020 – 2024</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Led volunteer teams in organizing cultural events, educational workshops, and multi-day trips for international Erasmus students in Athens.</li>
+                            <li>Managed project coordination, crisis resolution, and cross-cultural communication in a fast-paced international environment.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title"><i class="fa-solid fa-microchip"></i> Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <h3><i class="fa-brands fa-python"></i> Programming & ML</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">R</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <h3><i class="fa-solid fa-eye"></i> Computer Vision & Search</h3>
+                    <div class="tags">
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">MediaPipe</span>
+                        <span class="tag">FAISS</span>
+                        <span class="tag">h5py</span>
+                        <span class="tag">Scikit-Image</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <h3><i class="fa-solid fa-database"></i> Data & BI Tools</h3>
+                    <div class="tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Advanced Excel</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <h3><i class="fa-solid fa-chart-network"></i> Analytics Platforms</h3>
+                    <div class="tags">
+                        <span class="tag">RapidMiner</span>
+                        <span class="tag">Weka</span>
+                        <span class="tag">Matplotlib</span>
+                        <span class="tag">Seaborn</span>
+                        <span class="tag">Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Christos Tsamis · Built for GitHub Pages</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const htmlElement = document.documentElement;
+
+        // Check saved preference or default to dark
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        function setTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('portfolio-theme', theme);
+            if (theme === 'dark') {
+                themeIcon.className = 'fa-solid fa-sun';
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+    </script>
+</body>
+</html>
